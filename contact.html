@@ -92,6 +92,7 @@ section{padding:clamp(40px,7vh,80px) min(6vw,72px);max-width:1200px;margin:0 aut
 .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent-muted)}
 .btn.ghost:hover{background:var(--accent-muted)}
 .btn svg{width:18px;height:18px}
+.btn span{letter-spacing:0;word-spacing:normal;white-space:nowrap}
 
 .bundle{position:relative;margin-top:44px;background:linear-gradient(135deg,rgba(212,169,78,.12),var(--panel) 55%);border:1px solid rgba(212,169,78,.4);border-radius:24px;padding:44px 36px;text-align:center;overflow:hidden;opacity:calc(.15 + .85*var(--k,0));transform:translateY(calc((1 - var(--k,0))*28px))}
 .bundle::after{content:"";position:absolute;inset:0;box-shadow:0 0 90px rgba(212,169,78,.15) inset;pointer-events:none}
@@ -180,7 +181,7 @@ footer .meta a{color:var(--accent)}
   </div>
   <a class="nav-cta" href="https://wa.me/962792669090" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 9.2c.2 2.6 3.4 5.8 6 6l1.4-1.4-2-1.3-1 .7c-.8-.4-1.9-1.5-2.3-2.3l.7-1-1.3-2z"/></svg>
-    احكي معنا
+    <span>احكي معنا</span>
   </a>
 </nav>
 
@@ -212,7 +213,7 @@ footer .meta a{color:var(--accent)}
       <textarea name="msg" placeholder="احكيلنا عن مشروعك… شو شغلك؟ شو هدفك؟ *" required></textarea>
       <button type="submit" class="btn" style="width:100%">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 9.2c.2 2.6 3.4 5.8 6 6l1.4-1.4-2-1.3-1 .7c-.8-.4-1.9-1.5-2.3-2.3l.7-1-1.3-2z"/></svg>
-        أرسل الطلب عواتساب
+        <span>أرسل الطلب عواتساب</span>
       </button>
       <div class="form-msg" id="formMsg"></div>
       <p class="form-note">بكبسة وحدة بيتجهز طلبك برسالة واتساب جاهزة — أسرع طريقة توصلنا.</p>
