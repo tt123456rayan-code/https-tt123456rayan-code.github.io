@@ -2,268 +2,444 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الأسعار والباقات — حصن | أسعار واضحة بلا رسوم مخفية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>الأسعار والباقات — حِصن | أسعار واضحة بلا رسوم مخفية</title>
 <meta name="description" content="باقات حصن بالدينار الأردني: مواقع تبدأ من 150 د.أ، فيديوهات AI تبدأ من 40 د.أ، إدارة سوشال تبدأ من 120 د.أ/شهر، وحزمة انطلاقة شاملة.">
 <link rel="canonical" href="https://hisnjo.tech/pricing.html">
-<link rel="icon" type="image/png" href="https://pub.hyperagent.com/api/published/pbf01KZVT6ENM_2QN7RXY2FCNBYEPZ/favicon-64.png">
-<link rel="apple-touch-icon" href="https://pub.hyperagent.com/api/published/pbf01KZVT6FB8_NAFNCGSQFEP506EA/apple-touch-icon.png">
+<meta name="theme-color" content="#0d0b08">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_JO">
 <meta property="og:site_name" content="حصن — وكالة رقمية">
-<meta property="og:title" content="الأسعار والباقات — حصن | أسعار واضحة بلا رسوم مخفية">
+<meta property="og:title" content="الأسعار والباقات — حِصن | أسعار واضحة بلا رسوم مخفية">
 <meta property="og:description" content="باقات حصن بالدينار الأردني: مواقع تبدأ من 150 د.أ، فيديوهات AI تبدأ من 40 د.أ، إدارة سوشال تبدأ من 120 د.أ/شهر، وحزمة انطلاقة شاملة.">
 <meta property="og:url" content="https://hisnjo.tech/pricing.html">
-<meta property="og:image" content="https://pub.hyperagent.com/api/published/pbf01KZVT6G0Y_0NVXDK6BCKB8H6N6/og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pub.hyperagent.com/api/published/pbf01KZVT6G0Y_0NVXDK6BCKB8H6N6/og-image.jpg">
+<meta property="og:image" content="https://pub.hyperagent.com/api/published/pbf01M0AQA829_K56HF3GYE1YD2NY6/hero-ending.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 27 8v9c0 6-4.5 10-11 12C9.5 27 5 23 5 17V8z' fill='none' stroke='%23d4a94e' stroke-width='2.4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#0d0b08; --panel:#161209;
+  --accent:#d4a94e; --accent-hover:#e6c06a; --accent-muted:rgba(212,169,78,.16);
+  --text-primary:#f2ead8; --text-secondary:#b3a78e;
+  --ease:cubic-bezier(.22,.9,.28,1); --navh:62px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip;background:var(--canvas);color:var(--text-primary)}
+body{font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.9;opacity:0;transition:opacity .8s var(--ease)}
+body.ready{opacity:1}
+h1,h2,h3,.display{font-family:'Alexandria',sans-serif}
+.lat{letter-spacing:.14em;font-family:'Alexandria',sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.w{display:inline-block;white-space:pre-wrap}
+[data-wr] .w{--kc:clamp(0,calc((var(--k,0) - var(--th,0))*3.2),1);opacity:calc(.08 + .92*var(--kc));transform:translateY(calc((1 - var(--kc))*14px))}
+.env{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.env::before{content:"";position:absolute;inset:-20%;background:
+ radial-gradient(ellipse 60% 45% at 50% 8%,rgba(212,169,78,.05),transparent 60%),
+ radial-gradient(ellipse 90% 70% at 50% 110%,rgba(212,169,78,.04),transparent 55%);
+ animation:envDrift 75s ease-in-out -20s infinite alternate}
+.emb{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(230,192,106,.5);animation:embRise linear infinite}
+@keyframes envDrift{from{transform:translateY(-1.5%)}to{transform:translateY(1.5%) scale(1.04)}}
+@keyframes embRise{from{transform:translateY(12vh);opacity:0}12%{opacity:.7}88%{opacity:.5}to{transform:translateY(-104vh);opacity:0}}
+
+nav{position:fixed;top:0;right:0;left:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px min(4vw,44px);background:rgba(13,11,8,.92);border-bottom:1px solid rgba(212,169,78,.1);min-height:var(--navh)}
+.brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+.brand img{width:40px;height:40px}
+.brand b{font-family:'Alexandria';font-weight:800;font-size:1.2rem}
+.tabs{display:flex;align-items:center;gap:4px;flex:1 1 auto;justify-content:center;min-width:0}
+.tab{position:relative;padding:9px 16px;border-radius:10px;font-size:.95rem;font-weight:500;color:var(--text-secondary);transition:color .3s,background .3s;white-space:nowrap}
+.tab:hover{color:var(--text-primary);background:rgba(212,169,78,.07)}
+.tab::after{content:"";position:absolute;bottom:2px;right:16px;left:16px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transition:transform .35s var(--ease)}
+.tab.active{color:var(--accent)}
+.tab.active::after{transform:scaleX(1)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--accent-muted);color:var(--accent);padding:8px 18px;border-radius:99px;font-size:.88rem;font-weight:500;transition:background .35s,border-color .35s;flex:0 0 auto}
+.nav-cta:hover{background:var(--accent-muted);border-color:var(--accent)}
+.nav-cta svg{width:16px;height:16px}
+
+main{position:relative;z-index:2}
+.page-hero{padding:calc(var(--navh) + 70px) min(6vw,72px) 30px;max-width:1200px;margin:0 auto;text-align:center}
+.kicker{color:var(--accent);font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:12px;margin-bottom:14px}
+.kicker::before,.kicker::after{content:"";height:1px;width:44px;background:linear-gradient(270deg,var(--accent),transparent)}
+.kicker::before{background:linear-gradient(90deg,var(--accent),transparent)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;line-height:1.5}
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+.page-hero p{color:var(--text-secondary);max-width:52ch;margin:14px auto 0;font-size:1.05rem}
+section{padding:clamp(40px,7vh,80px) min(6vw,72px);max-width:1200px;margin:0 auto}
+
+.ptabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.ptabs button{font-family:inherit;font-size:.98rem;font-weight:500;color:var(--text-secondary);background:var(--panel);border:1px solid rgba(212,169,78,.16);padding:11px 28px;border-radius:99px;cursor:pointer;transition:all .35s var(--ease)}
+.ptabs button:hover{color:var(--text-primary);border-color:var(--accent)}
+.ptabs button.on{background:var(--accent);color:#14100a;border-color:var(--accent);font-weight:700}
+
+.ppanel{display:none;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.ppanel.on{display:grid}
+.price{position:relative;background:var(--panel);border:1px solid rgba(212,169,78,.12);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;opacity:calc(.15 + .85*var(--k,0));transform:translateY(calc((1 - var(--k,0))*28px));transition:border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.price:hover{border-color:var(--accent);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.price.pop{border-color:rgba(212,169,78,.45);background:linear-gradient(180deg,rgba(212,169,78,.07),var(--panel) 40%)}
+.badge{position:absolute;top:-13px;right:24px;background:var(--accent);color:#14100a;font-size:.75rem;font-weight:700;padding:4px 16px;border-radius:99px}
+.price h3{font-size:1.25rem;font-weight:700}
+.amount{font-family:'Alexandria';font-weight:800;font-size:1.9rem;color:var(--accent);margin:10px 0 2px;line-height:1.4}
+.amount small{font-size:.95rem;color:var(--text-secondary);font-weight:600}
+.note{color:var(--text-secondary);font-size:.85rem;margin-bottom:16px}
+.price ul{list-style:none;margin:0 0 22px;flex:1}
+.price li{position:relative;padding:7px 30px 7px 0;color:var(--text-secondary);font-size:.93rem;border-bottom:1px dashed rgba(212,169,78,.1)}
+.price li:last-child{border-bottom:0}
+.price li::before{content:"";position:absolute;right:4px;top:16px;width:14px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg) scaleX(-1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#14100a;font-weight:700;font-size:.98rem;padding:12px 28px;border-radius:99px;transition:background .35s,transform .35s}
+.btn:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent-muted)}
+.btn.ghost:hover{background:var(--accent-muted)}
+.btn svg{width:18px;height:18px}
+
+.bundle{position:relative;margin-top:44px;background:linear-gradient(135deg,rgba(212,169,78,.12),var(--panel) 55%);border:1px solid rgba(212,169,78,.4);border-radius:24px;padding:44px 36px;text-align:center;overflow:hidden;opacity:calc(.15 + .85*var(--k,0));transform:translateY(calc((1 - var(--k,0))*28px))}
+.bundle::after{content:"";position:absolute;inset:0;box-shadow:0 0 90px rgba(212,169,78,.15) inset;pointer-events:none}
+.bundle .ic{width:44px;height:44px;color:var(--accent);margin:0 auto 12px;display:block}
+.bundle .ic svg{width:100%;height:100%}
+.bundle h3{font-size:1.5rem;font-weight:800}
+.bundle p{color:var(--text-secondary);max-width:60ch;margin:8px auto}
+.bundle b{color:var(--accent)}
+.bundle .amount{font-size:2.2rem}
+
+.faq-head{text-align:center;margin-bottom:36px}
+.faq-head h2{font-size:clamp(1.6rem,3.6vw,2.6rem);font-weight:800}
+.qa{max-width:760px;margin:0 auto;border-bottom:1px solid rgba(212,169,78,.12)}
+.qa button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:0;color:var(--text-primary);font-family:inherit;font-size:1.02rem;font-weight:600;padding:20px 4px;cursor:pointer;text-align:right;line-height:1.7}
+.qa button svg{width:20px;height:20px;color:var(--accent);flex:0 0 auto;transition:transform .35s var(--ease)}
+.qa.open button svg{transform:rotate(45deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.qa .a p{color:var(--text-secondary);font-size:.95rem;padding:0 4px 20px}
+
+footer{position:relative;z-index:2;border-top:1px solid rgba(212,169,78,.12);padding:38px min(6vw,72px);background:var(--canvas)}
+.f-grid{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between;max-width:1200px;margin:0 auto}
+.f-brand{display:flex;align-items:center;gap:12px}
+.f-brand img{width:38px;height:38px}
+.f-about{color:var(--text-secondary);font-size:.88rem;max-width:38ch;margin-top:10px}
+footer .meta{color:var(--text-secondary);font-size:.92rem;display:flex;gap:20px;flex-wrap:wrap;align-items:baseline}
+footer .meta a{color:var(--accent)}
+.copy{color:var(--text-secondary);font-size:.8rem;text-align:center;margin-top:26px;opacity:.7}
+
+.wa-float{position:fixed;bottom:22px;left:22px;z-index:50;width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(212,169,78,.35);transition:transform .35s,background .35s}
+.wa-float:hover{transform:translateY(-4px) scale(1.05);background:var(--accent-hover)}
+.wa-float svg{width:28px;height:28px;color:#14100a}
+
+@media (max-width:760px){
+  nav{flex-wrap:wrap;padding:8px 12px;row-gap:2px}
+  .brand{order:1}.brand b{font-size:1.02rem}.brand img{width:34px;height:34px}
+  .nav-cta{order:2;padding:7px 13px;font-size:.8rem}
+  .tabs{order:3;flex-basis:100%;justify-content:space-between;gap:0;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{padding:7px 10px;font-size:.86rem}
+  :root{--navh:96px}
+  .ptabs button{padding:9px 18px;font-size:.88rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  body{opacity:1}
+  [data-wr] .w{opacity:1!important;transform:none!important}
+  .price,.bundle{opacity:1!important;transform:none!important}
+}
+</style>
 </head>
 <body>
-<div id="progress"></div>
-<canvas id="bg-net"></canvas>
-<div id="cursor-glow"></div>
+<div class="env" aria-hidden="true" id="env"></div>
 
-<header class="nav" id="nav">
-  <div class="nav__in">
-    <a class="brand" href="index.html">
-      <img src="https://pub.hyperagent.com/api/published/pbf01KZVT6D4P_KVYK2GE4WKCY70R9/logo.png" alt="شعار حصن" width="42" height="42">
-      <span class="brand__txt"><b>حصن</b><span>HISN · AGENCY</span></span>
-    </a>
-    <nav class="nav__links">
+<nav aria-label="التنقل الرئيسي">
+  <a class="brand" href="index.html">
+    <img src="https://pub.hyperagent.com/api/published/pbf01KZVT6D4P_KVYK2GE4WKCY70R9/logo.png" alt="شعار حصن" width="40" height="40">
+    <b>حِصن</b>
+  </a>
+  <div class="tabs">
+    <a class="tab" href="index.html">الرئيسية</a>
+    <a class="tab" href="index.html#services">خدماتنا</a>
+    <a class="tab" href="index.html#process">كيف منشتغل</a>
+    <a class="tab active" href="pricing.html">الأسعار</a>
+    <a class="tab" href="contact.html">تواصل</a>
+  </div>
+  <a class="nav-cta" href="https://wa.me/962792669090" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 9.2c.2 2.6 3.4 5.8 6 6l1.4-1.4-2-1.3-1 .7c-.8-.4-1.9-1.5-2.3-2.3l.7-1-1.3-2z"/></svg>
+    احكي معنا
+  </a>
+</nav>
+
+<main>
+<div class="page-hero">
+  <div class="kicker">الأسعار والباقات</div>
+  <h1 data-wr>أسعار <em>واضحة</em> — بلا رسوم مخفية</h1>
+  <p data-wr>اختار الخدمة وشوف الباقات. الأسعار بالدينار الأردني، وكل عرض بيوصلك مكتوب وواضح قبل ما نبدأ.</p>
+</div>
+
+<section style="padding-top:10px">
+  <div class="ptabs">
+    <button class="on" data-panel="pweb">المواقع</button>
+    <button data-panel="pvideo">فيديو AI</button>
+    <button data-panel="psocial">سوشال ميديا</button>
+  </div>
+
+  <div class="ppanel on" id="pweb">
+    <div class="price" data-kv>
+      <h3>صفحة هبوط</h3>
+      <div class="amount">يبدأ من 150 <small>د.أ</small></div>
+      <div class="note">دفعة واحدة · تسليم خلال أسبوع</div>
+      <ul>
+        <li>صفحة واحدة بتصميم مخصص</li>
+        <li>لغة واحدة (عربي أو إنجليزي)</li>
+        <li>نموذج تواصل + زر واتساب</li>
+        <li>سرعة تحميل أقل من ثانية</li>
+        <li>ربط دومين واستضافة</li>
+      </ul>
+      <a href="contact.html" class="btn ghost">اطلب عرض</a>
+    </div>
+    <div class="price pop" data-kv>
+      <span class="badge">الأكثر طلبًا</span>
+      <h3>موقع تعريفي</h3>
+      <div class="amount">يبدأ من 350 <small>د.أ</small></div>
+      <div class="note">دفعة واحدة · تسليم 2–3 أسابيع</div>
+      <ul>
+        <li>حتى 5 أقسام أو صفحات</li>
+        <li>لغتان: عربي + إنجليزي</li>
+        <li>تهيئة SEO كاملة</li>
+        <li>نماذج تواصل فعلية</li>
+        <li>ربط دومين + إيميل احترافي</li>
+        <li>شهر دعم مجاني بعد التسليم</li>
+      </ul>
+      <a href="contact.html" class="btn">اطلب عرض</a>
+    </div>
+    <div class="price" data-kv>
+      <h3>متجر / مشروع مخصص</h3>
+      <div class="amount">يبدأ من 700 <small>د.أ</small></div>
+      <div class="note">حسب المتطلبات · عرض مخصص</div>
+      <ul>
+        <li>دراسة متطلبات مفصلة</li>
+        <li>متجر أو منصة أو نظام خاص</li>
+        <li>تكامل مع الدفع الإلكتروني</li>
+        <li>تدريب على الإدارة</li>
+        <li>خطة صيانة اختيارية</li>
+      </ul>
+      <a href="contact.html" class="btn ghost">احجز اجتماع</a>
+    </div>
+  </div>
+
+  <div class="ppanel" id="pvideo">
+    <div class="price" data-kv>
+      <h3>فيديو واحد</h3>
+      <div class="amount">يبدأ من 40 <small>د.أ</small></div>
+      <div class="note">بالقطعة · تسليم 2–4 أيام</div>
+      <ul>
+        <li>فيديو 15–30 ثانية</li>
+        <li>سكربت + تعليق صوتي AI</li>
+        <li>مقاس لمنصة واحدة</li>
+        <li>تعديلان مجانيان</li>
+      </ul>
+      <a href="contact.html" class="btn ghost">اطلب فيديو</a>
+    </div>
+    <div class="price pop" data-kv>
+      <span class="badge">أفضل قيمة</span>
+      <h3>باقة شهرية</h3>
+      <div class="amount">يبدأ من 140 <small>د.أ/شهر</small></div>
+      <div class="note">4 فيديوهات شهريًا · بدون التزام طويل</div>
+      <ul>
+        <li>4 فيديوهات قصيرة بالشهر</li>
+        <li>مقاسات لكل المنصات</li>
+        <li>أولوية بالتنفيذ</li>
+        <li>خصم 15% عن السعر الإفرادي</li>
+        <li>تقويم محتوى شهري</li>
+      </ul>
+      <a href="contact.html" class="btn">اشترك الآن</a>
+    </div>
+    <div class="price" data-kv>
+      <h3>متحدث افتراضي</h3>
+      <div class="amount">يبدأ من 80 <small>د.أ</small></div>
+      <div class="note">بالقطعة · حسب المدة</div>
+      <ul>
+        <li>أفاتار يحكي باسم شركتك</li>
+        <li>حتى دقيقة كاملة</li>
+        <li>عربي أو إنجليزي — أو الاثنين</li>
+        <li>سكربت مكتوب علينا</li>
+      </ul>
+      <a href="contact.html" class="btn ghost">اطلب عرض</a>
+    </div>
+  </div>
+
+  <div class="ppanel" id="psocial">
+    <div class="price" data-kv>
+      <h3>أساسي</h3>
+      <div class="amount">يبدأ من 120 <small>د.أ/شهر</small></div>
+      <div class="note">لبداية حضور منظم</div>
+      <ul>
+        <li>12 بوست شهريًا (تصميم + نص)</li>
+        <li>منصتان (إنستغرام + فيسبوك)</li>
+        <li>جدولة ونشر</li>
+        <li>خطة محتوى شهرية</li>
+      </ul>
+      <a href="contact.html" class="btn ghost">ابدأ</a>
+    </div>
+    <div class="price pop" data-kv>
+      <span class="badge">الأكثر طلبًا</span>
+      <h3>نمو</h3>
+      <div class="amount">يبدأ من 220 <small>د.أ/شهر</small></div>
+      <div class="note">للي بده يكبر جمهوره فعليًا</div>
+      <ul>
+        <li>20 بوست + ستوريز أسبوعية</li>
+        <li>4 ريلز AI شهريًا</li>
+        <li>3 منصات</li>
+        <li>رد على التعليقات والرسائل</li>
+        <li>تقرير أداء شهري</li>
+      </ul>
+      <a href="contact.html" class="btn">اشترك الآن</a>
+    </div>
+    <div class="price" data-kv>
+      <h3>احترافي</h3>
+      <div class="amount">يبدأ من 380 <small>د.أ/شهر</small></div>
+      <div class="note">إدارة كاملة بمستوى فريق تسويق</div>
+      <ul>
+        <li>محتوى شبه يومي</li>
+        <li>8 فيديوهات AI شهريًا</li>
+        <li>كل المنصات المطلوبة</li>
+        <li>إدارة حملات ممولة</li>
+        <li>اجتماع شهري + تقرير مفصل</li>
+      </ul>
+      <a href="contact.html" class="btn ghost">احجز اجتماع</a>
+    </div>
+  </div>
+
+  <div class="bundle" data-kv>
+    <span class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M24 4c6 4 9 10 9 17l-4 6h-10l-4-6c0-7 3-13 9-17z"/><circle cx="24" cy="18" r="3.5"/><path d="M15 27l-6 8 8-2M33 27l6 8-8-2M20 33l-2 9 6-5 6 5-2-9"/></svg></span>
+    <h3>حزمة الانطلاقة الشاملة</h3>
+    <p data-wr>موقع تعريفي بلغتين + هوية سوشال ميديا + 4 فيديوهات AI + <b>شهر إدارة سوشال مجاني</b></p>
+    <div class="amount">يبدأ من 550 د.أ <small>بدل ~800 د.أ إفرادي</small></div>
+    <p data-wr style="margin-bottom:20px">كل اللي بتحتاجه لتطلق مشروعك رقميًا — بعرض واحد وسعر واحد.</p>
+    <a href="contact.html" class="btn">اطلب الحزمة</a>
+  </div>
+</section>
+
+<section>
+  <div class="faq-head">
+    <div class="kicker">أسئلة شائعة</div>
+    <h2 data-wr>أسئلة بتسألونا إياها كثير</h2>
+  </div>
+  <div class="qa"><button>كيف بيتم الدفع؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></button><div class="a"><p>للمشاريع: 50% عند البدء و50% عند التسليم. للاشتراكات الشهرية: بداية كل شهر. منقبل التحويل البنكي، كليك (CliQ)، والمحافظ الإلكترونية.</p></div></div>
+  <div class="qa"><button>قديش بياخد وقت تنفيذ الموقع؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></button><div class="a"><p>صفحة الهبوط خلال أسبوع، الموقع التعريفي 2–3 أسابيع، والمشاريع المخصصة حسب حجمها — المدة بتكون مكتوبة بالعرض قبل ما نبدأ.</p></div></div>
+  <div class="qa"><button>هل التعديلات محسوبة بسعر إضافي؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></button><div class="a"><p>لأ — جولتان تعديل مجانيتان ضمن كل مشروع. التعديلات الجذرية بعد الموافقة على التصميم بتنحسب حسب حجمها وبنتفق عليها قبل.</p></div></div>
+  <div class="qa"><button>الفيديوهات بالذكاء الاصطناعي… شو مستوى جودتها؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></button><div class="a"><p>منستخدم أحدث أدوات الإنتاج بالسوق، وما منسلم أي فيديو قبل ما يمر بمراجعة بشرية كاملة. بتقدر تطلب نموذج قبل ما تلتزم بأي باقة.</p></div></div>
+  <div class="qa"><button>هل بتشتغلوا مع عملاء خارج الأردن؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></button><div class="a"><p>أكيد — منشتغل عن بعد مع عملاء بالخليج وأوروبا وأمريكا، بالعربي أو الإنجليزي، والاجتماعات أونلاين بالوقت اللي بيناسبك.</p></div></div>
+  <div class="qa"><button>مين بيملك الموقع والمحتوى بعد التسليم؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></button><div class="a"><p>أنت. الكود والتصاميم والحسابات كلها باسمك، ومنسلمك كل الملفات وبيانات الدخول — بدون أي احتكار.</p></div></div>
+</section>
+</main>
+
+<footer>
+  <div class="f-grid">
+    <div>
+      <a class="f-brand" href="index.html">
+        <img src="https://pub.hyperagent.com/api/published/pbf01KZVT6D4P_KVYK2GE4WKCY70R9/logo.png" alt="شعار حصن" width="38" height="38">
+        <b class="display">حِصن</b>
+      </a>
+      <p class="f-about">وكالة رقمية أردنية بعقلية تقنية — مواقع، فيديوهات ذكاء اصطناعي، وسوشال ميديا. حضورك الرقمي… محصّن.</p>
+    </div>
+    <div class="meta">
       <a href="index.html">الرئيسية</a>
       <a href="services.html">الخدمات</a>
       <a href="portfolio.html">الأعمال</a>
       <a href="pricing.html">الأسعار</a>
       <a href="contact.html">تواصل</a>
-    </nav>
-    <a href="contact.html" class="btn btn--pri nav__cta">ابدأ مشروعك</a>
-    <button class="burger" id="burger" aria-label="القائمة"><span></span></button>
-  </div>
-</header>
-<div class="mobile">
-  <a href="index.html">الرئيسية</a>
-  <a href="services.html">الخدمات</a>
-  <a href="portfolio.html">الأعمال</a>
-  <a href="pricing.html">الأسعار</a>
-  <a href="contact.html">تواصل</a>
-  <a href="contact.html" class="btn btn--pri">ابدأ مشروعك</a>
-</div>
-
-<main>
-<section class="phero">
-  <span class="crumb"><a href="index.html">الرئيسية</a> / الأسعار</span>
-  <h1>أسعار <em>واضحة</em> — بلا رسوم مخفية</h1>
-  <p>اختار الخدمة وشوف الباقات. الأسعار بالدينار الأردني، وكل عرض بيوصلك مكتوب وواضح قبل ما نبدأ.</p>
-</section>
-
-<section style="padding-top:0">
-  <div class="container">
-    <div class="ptabs reveal">
-      <button class="on" data-panel="pweb">المواقع</button>
-      <button data-panel="pvideo">فيديو AI</button>
-      <button data-panel="psocial">سوشال ميديا</button>
     </div>
-
-    <div class="ppanel on" id="pweb">
-      <div class="price reveal">
-        <h3>صفحة هبوط</h3>
-        <div class="amount">يبدأ من 150 <small>د.أ</small></div>
-        <div class="note">دفعة واحدة · تسليم خلال أسبوع</div>
-        <ul>
-          <li>صفحة واحدة بتصميم مخصص</li>
-          <li>لغة واحدة (عربي أو إنجليزي)</li>
-          <li>نموذج تواصل + زر واتساب</li>
-          <li>سرعة تحميل أقل من ثانية</li>
-          <li>ربط دومين واستضافة</li>
-        </ul>
-        <a href="contact.html" class="btn btn--ghost">اطلب عرض</a>
-      </div>
-      <div class="price pop reveal d1">
-        <span class="badge">الأكثر طلبًا</span>
-        <h3>موقع تعريفي</h3>
-        <div class="amount">يبدأ من 350 <small>د.أ</small></div>
-        <div class="note">دفعة واحدة · تسليم 2–3 أسابيع</div>
-        <ul>
-          <li>حتى 5 أقسام أو صفحات</li>
-          <li>لغتان: عربي + إنجليزي</li>
-          <li>تهيئة SEO كاملة</li>
-          <li>نماذج تواصل فعلية</li>
-          <li>ربط دومين + إيميل احترافي</li>
-          <li>شهر دعم مجاني بعد التسليم</li>
-        </ul>
-        <a href="contact.html" class="btn btn--pri">اطلب عرض</a>
-      </div>
-      <div class="price reveal d2">
-        <h3>متجر / مشروع مخصص</h3>
-        <div class="amount">يبدأ من 700 <small>د.أ</small></div>
-        <div class="note">حسب المتطلبات · عرض مخصص</div>
-        <ul>
-          <li>دراسة متطلبات مفصلة</li>
-          <li>متجر أو منصة أو نظام خاص</li>
-          <li>تكامل مع الدفع الإلكتروني</li>
-          <li>تدريب على الإدارة</li>
-          <li>خطة صيانة اختيارية</li>
-        </ul>
-        <a href="contact.html" class="btn btn--ghost">احجز اجتماع</a>
-      </div>
-    </div>
-
-    <div class="ppanel" id="pvideo">
-      <div class="price reveal">
-        <h3>فيديو واحد</h3>
-        <div class="amount">يبدأ من 40 <small>د.أ</small></div>
-        <div class="note">بالقطعة · تسليم 2–4 أيام</div>
-        <ul>
-          <li>فيديو 15–30 ثانية</li>
-          <li>سكربت + تعليق صوتي AI</li>
-          <li>مقاس لمنصة واحدة</li>
-          <li>تعديلان مجانيان</li>
-        </ul>
-        <a href="contact.html" class="btn btn--ghost">اطلب فيديو</a>
-      </div>
-      <div class="price pop reveal d1">
-        <span class="badge">أفضل قيمة</span>
-        <h3>باقة شهرية</h3>
-        <div class="amount">يبدأ من 140 <small>د.أ/شهر</small></div>
-        <div class="note">4 فيديوهات شهريًا · بدون التزام طويل</div>
-        <ul>
-          <li>4 فيديوهات قصيرة بالشهر</li>
-          <li>مقاسات لكل المنصات</li>
-          <li>أولوية بالتنفيذ</li>
-          <li>خصم 15% عن السعر الإفرادي</li>
-          <li>تقويم محتوى شهري</li>
-        </ul>
-        <a href="contact.html" class="btn btn--pri">اشترك الآن</a>
-      </div>
-      <div class="price reveal d2">
-        <h3>متحدث افتراضي</h3>
-        <div class="amount">يبدأ من 80 <small>د.أ</small></div>
-        <div class="note">بالقطعة · حسب المدة</div>
-        <ul>
-          <li>أفاتار يحكي باسم شركتك</li>
-          <li>حتى دقيقة كاملة</li>
-          <li>عربي أو إنجليزي — أو الاثنين</li>
-          <li>سكربت مكتوب علينا</li>
-        </ul>
-        <a href="contact.html" class="btn btn--ghost">اطلب عرض</a>
-      </div>
-    </div>
-
-    <div class="ppanel" id="psocial">
-      <div class="price reveal">
-        <h3>أساسي</h3>
-        <div class="amount">يبدأ من 120 <small>د.أ/شهر</small></div>
-        <div class="note">لبداية حضور منظم</div>
-        <ul>
-          <li>12 بوست شهريًا (تصميم + نص)</li>
-          <li>منصتان (إنستغرام + فيسبوك)</li>
-          <li>جدولة ونشر</li>
-          <li>خطة محتوى شهرية</li>
-        </ul>
-        <a href="contact.html" class="btn btn--ghost">ابدأ</a>
-      </div>
-      <div class="price pop reveal d1">
-        <span class="badge">الأكثر طلبًا</span>
-        <h3>نمو</h3>
-        <div class="amount">يبدأ من 220 <small>د.أ/شهر</small></div>
-        <div class="note">للي بده يكبر جمهوره فعليًا</div>
-        <ul>
-          <li>20 بوست + ستوريز أسبوعية</li>
-          <li>4 ريلز AI شهريًا</li>
-          <li>3 منصات</li>
-          <li>رد على التعليقات والرسائل</li>
-          <li>تقرير أداء شهري</li>
-        </ul>
-        <a href="contact.html" class="btn btn--pri">اشترك الآن</a>
-      </div>
-      <div class="price reveal d2">
-        <h3>احترافي</h3>
-        <div class="amount">يبدأ من 380 <small>د.أ/شهر</small></div>
-        <div class="note">إدارة كاملة بمستوى فريق تسويق</div>
-        <ul>
-          <li>محتوى شبه يومي</li>
-          <li>8 فيديوهات AI شهريًا</li>
-          <li>كل المنصات المطلوبة</li>
-          <li>إدارة حملات ممولة</li>
-          <li>اجتماع شهري + تقرير مفصل</li>
-        </ul>
-        <a href="contact.html" class="btn btn--ghost">احجز اجتماع</a>
-      </div>
-    </div>
-
-    <div class="bundle reveal reveal--zoom">
-      <span class="tag mono" style="color:var(--cyan);letter-spacing:.2em;font-size:.72rem">// LAUNCH BUNDLE</span>
-      <h3 style="margin:.4rem 0">🚀 حزمة الانطلاقة الشاملة</h3>
-      <p style="margin-bottom:.8rem">موقع تعريفي بلغتين + هوية سوشال ميديا + 4 فيديوهات AI + <b style="color:var(--green)">شهر إدارة سوشال مجاني</b></p>
-      <div class="amount">يبدأ من 550 د.أ <small style="font-size:.9rem;color:var(--muted2)">بدل ~800 د.أ إفرادي</small></div>
-      <p style="margin:.8rem 0 1.2rem;font-size:.9rem">كل اللي بتحتاجه لتطلق مشروعك رقميًا — بعرض واحد وسعر واحد.</p>
-      <a href="contact.html" class="btn btn--pri">اطلب الحزمة</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container" style="max-width:760px">
-    <div class="sec-head reveal">
-      <span class="tag">// FAQ</span>
-      <h2>أسئلة بتسألونا إياها كثير</h2>
-    </div>
-    <div class="reveal">
-      <div class="qa"><button class="qa__q">كيف بيتم الدفع؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa__a"><p>للمشاريع: 50% عند البدء و50% عند التسليم. للاشتراكات الشهرية: بداية كل شهر. منقبل التحويل البنكي، كليك (CliQ)، والمحافظ الإلكترونية.</p></div></div>
-      <div class="qa"><button class="qa__q">قديش بياخد وقت تنفيذ الموقع؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa__a"><p>صفحة الهبوط خلال أسبوع، الموقع التعريفي 2–3 أسابيع، والمشاريع المخصصة حسب حجمها — المدة بتكون مكتوبة بالعرض قبل ما نبدأ.</p></div></div>
-      <div class="qa"><button class="qa__q">هل التعديلات محسوبة بسعر إضافي؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa__a"><p>لأ — جولتان تعديل مجانيتان ضمن كل مشروع. التعديلات الجذرية بعد الموافقة على التصميم بتنحسب حسب حجمها وبنتفق عليها قبل.</p></div></div>
-      <div class="qa"><button class="qa__q">الفيديوهات بالذكاء الاصطناعي… شو مستوى جودتها؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa__a"><p>منستخدم أحدث أدوات الإنتاج بالسوق، وما منسلم أي فيديو قبل ما يمر بمراجعة بشرية كاملة. بتقدر تطلب نموذج قبل ما تلتزم بأي باقة.</p></div></div>
-      <div class="qa"><button class="qa__q">هل بتشتغلوا مع عملاء خارج الأردن؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa__a"><p>أكيد — منشتغل عن بعد مع عملاء بالخليج وأوروبا وأمريكا، بالعربي أو الإنجليزي، والاجتماعات أونلاين بالوقت اللي بيناسبك.</p></div></div>
-      <div class="qa"><button class="qa__q">مين بيملك الموقع والمحتوى بعد التسليم؟ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa__a"><p>أنت. الكود والتصاميم والحسابات كلها باسمك، ومنسلمك كل الملفات وبيانات الدخول — بدون أي احتكار.</p></div></div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="foot">
-    <div>
-      <a class="brand" href="index.html" style="margin-bottom:.8rem">
-        <img src="https://pub.hyperagent.com/api/published/pbf01KZVT6D4P_KVYK2GE4WKCY70R9/logo.png" alt="شعار حصن" width="38" height="38">
-        <span class="brand__txt"><b>حصن</b><span>HISN · AGENCY</span></span>
-      </a>
-      <p>وكالة رقمية أردنية بعقلية تقنية — مواقع، فيديوهات ذكاء اصطناعي، وسوشال ميديا. حضورك الرقمي… محصّن.</p>
-    </div>
-    <div>
-      <h4>الصفحات</h4>
-      <a href="index.html">الرئيسية</a>
-      <a href="services.html">الخدمات</a>
-      <a href="portfolio.html">الأعمال</a>
-      <a href="pricing.html">الأسعار</a>
-    </div>
-    <div>
-      <h4>الخدمات</h4>
-      <a href="services.html#web">تصميم المواقع</a>
-      <a href="services.html#video">فيديوهات AI</a>
-      <a href="services.html#social">سوشال ميديا</a>
-    </div>
-    <div>
-      <h4>تواصل</h4>
-      <a data-wa="مرحبا، بدي أستفسر عن خدماتكم">واتساب مباشر</a>
+    <div class="meta">
+      <a href="https://wa.me/962792669090" target="_blank" rel="noopener noreferrer">واتساب مباشر</a>
       <a href="https://www.instagram.com/hisn_jo/" target="_blank" rel="noopener noreferrer">إنستغرام @hisn_jo</a>
-      <a data-mail="show"></a>
-      <a href="contact.html">نموذج التواصل</a>
+      <a href="mailto:info@hisnjo.tech">info@hisnjo.tech</a>
     </div>
   </div>
-  <div class="copy">
-    <span>© 2026 حصن — وكالة رقمية · عمّان، الأردن</span>
-    <span class="mono">HISNJO.TECH</span>
-  </div>
+  <div class="copy">© 2026 حصن — وكالة رقمية · عمّان، الأردن · <span class="lat">HISNJO.TECH</span></div>
 </footer>
 
-<a class="wa-float" data-wa="مرحبا، بدي أستفسر عن خدماتكم" aria-label="تواصل واتساب">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.2-1.1c-.3-.1-.6-.1-.8.2l-1 1.2c-.2.2-.5.3-.8.2-1-.4-3-2.2-3.6-3.3-.2-.3-.1-.6.1-.8l1-1.1c.2-.3.3-.6.1-.9l-1-2.2c-.2-.5-.7-.7-1.2-.5C6.9 6.6 6 7.6 6 8.9c0 3.4 4.4 8.1 8.6 8.9 1.3.3 2.5-.3 3.2-1.5.3-.4.1-1-.3-1.2zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+<a class="wa-float" href="https://wa.me/962792669090?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A8%D8%AF%D9%8A%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85" target="_blank" rel="noopener noreferrer" aria-label="تواصل واتساب">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 9.2c.2 2.6 3.4 5.8 6 6l1.4-1.4-2-1.3-1 .7c-.8-.4-1.9-1.5-2.3-2.3l.7-1-1.3-2z"/></svg>
 </a>
 
-<script src="assets/app.js"></script>
+<script>
+'use strict';
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)');
+function rng(seed){let s=seed>>>0;return()=>(s=(s*1664525+1013904223)>>>0)/4294967296;}
+function splitWords(el){
+  const full=el.textContent;
+  const parts=[];el.childNodes.forEach(n=>parts.push(n));
+  const sr=document.createElement('span');
+  sr.style.cssText='position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)';
+  sr.textContent=full;
+  const vis=document.createElement('span');vis.setAttribute('aria-hidden','true');
+  const total=full.split(/\s+/).filter(Boolean).length||1;let wi=0;
+  function walk(node){
+    if(node.nodeName==='BR'){vis.appendChild(document.createElement('br'));return;}
+    if(node.nodeType===1){ /* keep styled children (b, em) intact as one word-block */
+      const w=document.createElement('span');w.className='w';
+      w.style.setProperty('--th',(wi/total*0.55).toFixed(3));
+      w.appendChild(node.cloneNode(true));vis.appendChild(w);wi++;return;
+    }
+    (node.textContent||'').split(/(\s+)/).forEach(word=>{
+      if(!word)return;
+      if(/^\s+$/.test(word)){vis.appendChild(document.createTextNode(word));return;}
+      const w=document.createElement('span');w.className='w';w.textContent=word;
+      w.style.setProperty('--th',(wi/total*0.55).toFixed(3));
+      vis.appendChild(w);wi++;
+    });
+  }
+  parts.forEach(walk);
+  el.textContent='';el.appendChild(sr);el.appendChild(vis);
+}
+document.querySelectorAll('[data-wr]').forEach(splitWords);
+
+const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
+function setK(el,k){
+  if(el.__k!==undefined&&Math.abs(el.__k-k)<0.008)return;
+  el.__k=k;el.style.setProperty('--k',k.toFixed(3));
+}
+const WR=[...document.querySelectorAll('[data-wr]')];
+const KV=[...document.querySelectorAll('[data-kv]')];
+function onScroll(){
+  const vh=innerHeight;
+  WR.forEach(el=>{const r=el.getBoundingClientRect();
+    if(r.width===0||r.bottom<-80||r.top>vh+80)return;
+    setK(el,clamp((vh*0.9-r.top)/(vh*0.45),0,1));});
+  KV.forEach(el=>{const r=el.getBoundingClientRect();
+    if(r.width===0||r.bottom<-80||r.top>vh+80)return;
+    setK(el,clamp((vh*0.92-r.top)/(vh*0.4),0,1));});
+}
+if(!REDUCED.matches){addEventListener('scroll',onScroll,{passive:true});}
+
+/* pricing panels */
+document.querySelectorAll('.ptabs button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.ptabs button').forEach(x=>x.classList.toggle('on',x===b));
+    document.querySelectorAll('.ppanel').forEach(p=>p.classList.toggle('on',p.id===b.dataset.panel));
+    [...document.querySelectorAll('.ppanel.on [data-kv]')].forEach(el=>{el.__k=undefined;});
+    onScroll();
+  });
+});
+
+/* FAQ accordion */
+document.querySelectorAll('.qa').forEach(q=>{
+  const btn=q.querySelector('button'),a=q.querySelector('.a');
+  btn.addEventListener('click',()=>{
+    const open=q.classList.toggle('open');
+    a.style.maxHeight=open?a.scrollHeight+'px':'0';
+  });
+});
+
+/* embers */
+const env=document.getElementById('env');const er=rng(77);
+const N=matchMedia('(max-width:760px)').matches?7:12;
+for(let i=0;i<N;i++){
+  const d=document.createElement('div');d.className='emb';
+  d.style.left=(er()*100).toFixed(1)+'%';d.style.top=(60+er()*40).toFixed(1)+'%';
+  d.style.animationDuration=(14+er()*18).toFixed(1)+'s';
+  d.style.animationDelay=(-er()*20).toFixed(1)+'s';
+  d.style.opacity=(0.25+er()*0.4).toFixed(2);
+  env.appendChild(d);
+}
+if(REDUCED.matches){WR.concat(KV).forEach(el=>setK(el,1));}
+onScroll();
+document.body.classList.add('ready');
+</script>
 </body>
 </html>
