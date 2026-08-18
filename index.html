@@ -153,8 +153,8 @@ h2.head{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.55;max-wi
 .pr{background:var(--panel);border:1px solid rgba(212,169,78,.1);border-radius:18px;padding:30px 26px;position:relative;overflow:hidden;opacity:calc(.15 + .85*var(--k,0));transform:translateY(calc((1 - var(--k,0))*30px))}
 .pr::after{content:"";position:absolute;inset:0;border-radius:18px;box-shadow:0 0 44px rgba(212,169,78,.12) inset;opacity:0;transition:opacity .5s}
 .pr:hover::after{opacity:1}
-.pr b{display:block;font-family:'Alexandria';font-weight:800;font-size:1.35rem;line-height:1.6;color:var(--accent)}
-.pr span{color:var(--text-secondary);font-size:.95rem;display:block;margin-top:10px}
+.pr > b{display:block;font-family:'Alexandria';font-weight:800;font-size:1.35rem;line-height:1.6;color:var(--accent)}
+.pr > span{color:var(--text-secondary);font-size:.95rem;display:block;margin-top:10px}
 
 /* explore cards (home) */
 .explore{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:44px}
@@ -442,7 +442,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
           شوف الباقات والأسعار
         </a>
       </div>
-      <div class="contact-lines" data-wr>
+      <div class="contact-lines">
         <span>وكالة إبداعية رقمية · عمّان، الأردن</span>
         <a href="https://hisnjo.tech" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9z"/></svg><span class="lat">HISNJO.TECH</span></a>
       </div>
