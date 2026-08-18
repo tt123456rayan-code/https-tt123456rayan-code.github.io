@@ -79,6 +79,7 @@ nav{position:fixed;top:0;right:0;left:0;z-index:40;display:flex;align-items:cent
 .stage.video-ready canvas{opacity:1}
 .stage.video-failed canvas{display:none}
 .stage .scrim{pointer-events:none;background:radial-gradient(ellipse 120% 90% at 50% 45%,rgba(10,8,5,0) 35%,rgba(10,8,5,.62) 100%)}
+.ending-ov{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;pointer-events:none}
 .snum{position:absolute;bottom:24px;right:min(5vw,48px);color:var(--accent);opacity:.55;font-size:.78rem;display:flex;align-items:baseline;gap:10px}
 .snum::after{content:"";width:44px;height:1px;background:var(--accent);opacity:.5;align-self:center}
 .scue{position:absolute;bottom:22px;left:0;right:0;margin:auto;width:26px;height:26px;color:var(--accent);opacity:.8;animation:chevBob 2.6s var(--ease2) -1s infinite}
@@ -281,6 +282,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     <div class="stage" id="heroStage">
       <div class="poster" id="heroPoster"></div>
       <canvas id="heroVid" aria-hidden="true" tabindex="-1"></canvas>
+      <div class="ending-ov" id="endingOv" aria-hidden="true"></div>
       <div class="scrim" aria-hidden="true"></div>
 
       <div class="band" id="b1" data-ramp="0.032"><h2 data-split="scatter">في عمّان، أحلى شغل بضل مخبّي.</h2></div>
@@ -472,18 +474,23 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 /* =================== config =================== */
 const IS_MOBILE = matchMedia('(max-width: 760px)').matches;
 /* frame-sequence packs (canvas scrub = zero video decode, buttery on phone + desktop) */
-/* packs served from hisnjo.tech (GitHub Pages sends Access-Control-Allow-Origin: * — works same-origin AND from any wrapper).
-   Each pack is base64 text split into .partN files of <3MB. */
-const PACK_BASE = 'https://hisnjo.tech/cinematic/packs/';
-const PACK_PARTS = { 'hero-d':2, 'hero-m':1, 'path-d':2, 'path-m':1, 'weave-d':3, 'weave-m':2 };
+/* WebP frame packs v2 on hisnjo.tech (GitHub Pages sends Access-Control-Allow-Origin: *).
+   Mobile gets NATIVE PORTRAIT 9:16 footage — no cropping. Base64 text parts <3MB each. */
+const PACK_BASE = 'https://hisnjo.tech/cinematic/packs2/';
+const PACK_PARTS = { 'hero-d':2, 'hero-m':3, 'path-d':2, 'path-m':1, 'weave-d':3, 'weave-m':2 };
 function packOf(name){ const n = name + (IS_MOBILE ? '-m' : '-d'); return { name:n, parts:PACK_PARTS[n] }; }
 const ASSETS = {
   hero: { pack: packOf('hero'),
-    poster: 'https://pub.hyperagent.com/api/published/pbf01M0AQA7TA_G25C4221KM394JXF/hero-poster.jpg' },
+    poster: IS_MOBILE ? 'https://pub.hyperagent.com/api/published/pbf01M0AW892V_7KRNBR6VM1WRJ63S/hero-p-poster.jpg'
+                      : 'https://pub.hyperagent.com/api/published/pbf01M0AQA7TA_G25C4221KM394JXF/hero-poster.jpg',
+    ending: IS_MOBILE ? 'https://pub.hyperagent.com/api/published/pbf01M0AW8B1Z_6WNMYNJ7YNFN24JF/ending-portrait.png'
+                      : 'https://pub.hyperagent.com/api/published/pbf01M0AQA829_K56HF3GYE1YD2NY6/hero-ending.jpg' },
   weave: { pack: packOf('weave'),
-    poster: 'https://pub.hyperagent.com/api/published/pbf01M0AR6KH4_K6R1KX5XGBFSDKBS/weave-poster.jpg' },
+    poster: IS_MOBILE ? 'https://pub.hyperagent.com/api/published/pbf01M0AW89SE_9V7NSEM6MN2CKGXP/weave-p-poster.jpg'
+                      : 'https://pub.hyperagent.com/api/published/pbf01M0AR6KH4_K6R1KX5XGBFSDKBS/weave-poster.jpg' },
   path: { pack: packOf('path'),
-    poster: 'https://pub.hyperagent.com/api/published/pbf01M0AR6KWC_9WNF29RA4FHMBV25/path-poster.jpg' }
+    poster: IS_MOBILE ? 'https://pub.hyperagent.com/api/published/pbf01M0AW8AKR_W6FCJJ2KP56FMV2X/path-p-poster.jpg'
+                      : 'https://pub.hyperagent.com/api/published/pbf01M0AR6KWC_9WNF29RA4FHMBV25/path-poster.jpg' }
 };
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -544,7 +551,10 @@ function setOp(el,op){
   el.__op = op; el.style.opacity = op.toFixed(3);
 }
 
-/* =================== Stage engine (canvas frame-sequence scrub) =================== */
+/* =================== Stage engine v3: sliding-window ImageBitmap scrub ===================
+   All decoding happens OFF the main thread via createImageBitmap; drawImage is a pure blit.
+   A window of decoded bitmaps slides with the scrub position; nothing decodes synchronously. */
+const DECODE_R = IS_MOBILE ? 8 : 10;   /* decoded window radius */
 class Stage {
   constructor(id,pinId,stageId,canId,posterId,urls,acts){
     this.id=id;
@@ -556,9 +566,8 @@ class Stage {
     this.urls=urls; this.acts=acts;
     this.target=0; this.shown=0; this.raf=null; this.lastTick=0;
     this.armed=false; this.ready=false; this.onScreen=false;
-    this.frames=[];      /* Image objects */
-    this.loaded=[];      /* per-frame loaded flag */
-    this.N=0; this.drawnIdx=-1;
+    this.blobs=[]; this.bm=new Map(); this.pending=new Set();
+    this.N=0; this.drawnIdx=-1; this.dir=1;
     new IntersectionObserver(es=>{ this.onScreen=es[0].isIntersecting;
       if(this.onScreen){this.arm();this.kick();} },{rootMargin:'120% 0%'}).observe(this.pin);
   }
@@ -597,22 +606,47 @@ class Stage {
     for(let i=0;i<bin.length;i++)buf[i]=bin.charCodeAt(i);
     const dv=new DataView(buf.buffer);
     this.N=dv.getUint32(0,true);
-    this.frames=new Array(this.N);this.loaded=new Array(this.N).fill(false);
+    this.blobs=new Array(this.N);
     let off=4+this.N*4;
     for(let i=0;i<this.N;i++){
       const L=dv.getUint32(4+i*4,true);
-      const blob=new Blob([buf.subarray(off,off+L)],{type:'image/jpeg'});
-      const img=new Image();
-      img.onload=()=>{ this.loaded[i]=true;
-        if(!this.ready&&i===0){ this.ready=true;
-          this.canvas.width=img.naturalWidth;this.canvas.height=img.naturalHeight;
-          this.el.classList.add('video-ready'); }
-        if(this.ready) this.draw(this.frameIdx(this.shown));
-      };
-      img.src=URL.createObjectURL(blob);
-      this.frames[i]=img; off+=L;
+      this.blobs[i]=new Blob([buf.subarray(off,off+L)],{type:'image/webp'});
+      off+=L;
     }
+    /* decode frame 0 first for instant paint, then fill the window */
+    const bm0=await createImageBitmap(this.blobs[0]);
+    this.bm.set(0,bm0);
+    this.canvas.width=bm0.width; this.canvas.height=bm0.height;
+    this.ready=true;
+    this.el.classList.add('video-ready');
+    this.draw(this.frameIdx(this.shown));
+    this.ensureWindow(this.frameIdx(this.shown));
     if(this.id==='hero'){ringC.style.setProperty('--ld',0);setTimeout(()=>ringWrap.style.opacity='0',700);}
+  }
+  decodeFrame(i){
+    if(this.bm.has(i)||this.pending.has(i)||!this.blobs[i])return;
+    this.pending.add(i);
+    createImageBitmap(this.blobs[i]).then(b=>{
+      this.pending.delete(i);
+      this.bm.set(i,b);
+      const cur=this.frameIdx(this.shown);
+      if(Math.abs(i-cur)<=1) this.draw(cur);
+    }).catch(()=>this.pending.delete(i));
+  }
+  ensureWindow(center){
+    /* prioritize: current, then ahead in scroll direction, then behind */
+    this.decodeFrame(center);
+    for(let d=1;d<=DECODE_R;d++){
+      this.decodeFrame(clamp(center+d*this.dir,0,this.N-1));
+      this.decodeFrame(clamp(center-d*this.dir,0,this.N-1));
+    }
+    /* evict far bitmaps (keep frame 0 for instant top) */
+    for(const k of this.bm.keys()){
+      if(k!==0&&Math.abs(k-center)>DECODE_R+5){
+        const b=this.bm.get(k); this.bm.delete(k);
+        if(b.close)b.close();
+      }
+    }
   }
   fail(){
     if(this.ready)return;
@@ -622,16 +656,19 @@ class Stage {
   frameIdx(p){ return this.N?Math.min(this.N-1,Math.round(p*(this.N-1))):0; }
   draw(idx){
     if(!this.ready||!this.N)return;
-    /* nearest loaded frame at or below idx, else nearest above */
-    let i=idx;
-    while(i>=0&&!this.loaded[i])i--;
-    if(i<0){i=idx;while(i<this.N&&!this.loaded[i])i++;if(i>=this.N)return;}
-    if(i===this.drawnIdx)return;
-    this.drawnIdx=i;
-    this.ctx.drawImage(this.frames[i],0,0);
+    let best=-1,bd=1e9;
+    for(const k of this.bm.keys()){
+      const d=Math.abs(k-idx);
+      if(d<bd){bd=d;best=k;}
+    }
+    if(best<0||best===this.drawnIdx)return;
+    this.drawnIdx=best;
+    this.ctx.drawImage(this.bm.get(best),0,0);
   }
   kick(){
-    this.target=this.progress();
+    const t=this.progress();
+    this.dir=t>=this.target?1:-1;
+    this.target=t;
     if(this.raf===null&&this.onScreen)this.raf=requestAnimationFrame(n=>this.tick(n));
   }
   tick(now){
@@ -641,7 +678,9 @@ class Stage {
     this.shown+=(this.target-this.shown)*(1-Math.pow(1-k,dt/16.667));
     if(Math.abs(this.target-this.shown)<0.0005){this.shown=this.target;this.raf=null;this.lastTick=0;}
     else this.raf=requestAnimationFrame(n=>this.tick(n));
-    this.draw(this.frameIdx(this.shown));
+    const fi=this.frameIdx(this.shown);
+    this.draw(fi);
+    if(this.ready)this.ensureWindow(fi);
     this.acts(this.shown);
   }
 }
@@ -658,7 +697,11 @@ const HERO_BANDS=[
   {el:document.getElementById('b4'),a:0.72,b:1.00},
 ];
 let loadK=0,loadStart=0;
+const endingOv=document.getElementById('endingOv');
+endingOv.style.backgroundImage="url('"+ASSETS.hero.ending+"')";
 function heroActs(p){
+  /* pixel-perfect official logo takes over at the settle */
+  setOp(endingOv, smoothstep(p,0.93,0.985));
   HERO_BANDS.forEach((band,i)=>{
     const f=Math.min(0.02,(band.b-band.a)/3);
     let op;
@@ -703,9 +746,10 @@ function weaveActs(p){
 /* path stage */
 const pathHead=document.getElementById('pathHead');
 const JS=[document.getElementById('js1'),document.getElementById('js2'),document.getElementById('js3')];
-const JS_AT=[0.16,0.44,0.70];
+const JS_AT=[0.36,0.56,0.76];
 function pathActs(p){
-  setOp(pathHead,smoothstep(p,0.02,0.08));
+  /* the head vanishes completely before any step appears — no text overlap, ever */
+  setOp(pathHead,smoothstep(p,0.02,0.08)*(1-smoothstep(p,0.24,0.34)));
   setK(pathHead,clamp((p-0.02)/0.09,0,1));
   JS.forEach((st,i)=>{
     const k=smoothstep(p,JS_AT[i],JS_AT[i]+0.10);
@@ -823,7 +867,7 @@ function pinToFinalStates(){
   fortSvg.style.setProperty('--hp',1);
   holdSec.classList.add('hold-done');
   holdHint.textContent='حصنك مبني. هيك بالضبط منبني حضورك: حجر فوق حجر.';
-  document.getElementById('heroPoster').style.backgroundImage="url('https://pub.hyperagent.com/api/published/pbf01M0AQA829_K56HF3GYE1YD2NY6/hero-ending.jpg')";
+  document.getElementById('heroPoster').style.backgroundImage="url('"+ASSETS.hero.ending+"')";
   document.getElementById('weavePoster').style.backgroundImage="url('"+ASSETS.weave.poster+"')";
   document.getElementById('pathPoster').style.backgroundImage="url('"+ASSETS.path.poster+"')";
 }
